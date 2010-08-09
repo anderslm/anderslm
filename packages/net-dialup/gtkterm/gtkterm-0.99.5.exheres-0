@@ -1,0 +1,27 @@
+# Copyright 2010 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Terminal program that drives serial ports."
+DESCRIPTION="
+A 'clone' of the famous HyperTerminal, but it adds the ability to show the received
+characters as hex, and send hex characters to the serial port. The user can also set the hardware
+handshaking lines.
+"
+HOMEPAGE="http://www.jls-info.com/julien/linux/"
+DOWNLOADS="http://www.jls-info.com/julien/linux/${PNV}.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/vte
+"
+
+BUGS_TO="alm.anma@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --hates=docdir
+)
+
