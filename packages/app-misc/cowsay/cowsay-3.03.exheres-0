@@ -1,0 +1,42 @@
+# Copyright 2010 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Speaking cow."
+DESCRIPTION="
+Cowsay is basically a text filter. Send some text into it, and you get a cow saying your text. 
+"
+HOMEPAGE="http://www.nog.net/~tony/warez/cowsay.shtml"
+DOWNLOADS="http://www.nog.net/~tony/warez/${PNV}.tar.gz"
+
+LICENCES="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/perl
+"
+
+BUGS_TO="alm.anma@gmail.com"
+
+src_configure()
+{
+    # Manually create install path
+    edo mkdir -p "${IMAGE}"usr/local
+}
+
+src_compile()
+{
+    # Call install script with newly created directory as install target
+    edo "${WORK}"/./install.sh "${IMAGE}"usr/local
+}
+
+src_install()
+{
+    # Replace paths in installed executable
+    edo sed -i 's!'"${IMAGE}"'!/!' "${IMAGE}"usr/local/bin/cowsay
+
+    default
+}
+
