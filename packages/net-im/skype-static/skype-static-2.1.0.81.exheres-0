@@ -1,0 +1,65 @@
+# Copyright 2010 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+# Based in part upon 'skype.exlib', which is:
+#     Copyright 2010 Timothy Redaelli
+
+MYPNV=${PNV/-/_}
+
+SUMMARY="A P2P-VoiceIP client."
+DESCRIPTION="Skype is the next phenomenon from the people who 
+brought you KaZaA. Just like KaZaA, Skype uses P2P (peer-to-peer) 
+technology to connect you to other users  not to share files this 
+time, but to talk and chat with your friends."
+HOMEPAGE="http://www.skype.com"
+DOWNLOADS="http://download.skype.com/linux/${MYPNV}.tar.bz2"
+
+LICENCES="skype"
+# skype binary check its checksum
+RESTRICT="strip"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        !net-im/skype [[ note = [ There is no reason for installing if non-static Skype works ] ]]
+"
+
+BUGS_TO="alm.anma@gmail.com"
+
+REMOTE_IDS="freshmeat:${PN}"
+
+WORK=${WORK/%$PNV/$MYPNV}
+IMAGE=${IMAGE/$PNV/$MYPNV}
+
+src_install() {
+    exeinto /opt/${PN}
+    doexe skype
+
+    herebin skype <<'EOF'
+#!/bin/sh
+/opt/skype-static/skype --resources=/opt/skype-static "$@"
+EOF
+
+    edo chown root:audio "${IMAGE}"/opt/skype-static/skype "${IMAGE}"/usr/bin/skype
+    edo chmod 0755 "${IMAGE}"/usr/bin/skype
+
+    insinto /opt/${PN}/sounds
+    doins sounds/*.wav
+
+    insinto /opt/${PN}/lang
+    doins lang/*.qm
+
+    insinto /opt/${PN}/avatars
+    doins avatars/*.png
+
+    for x in 16 32 48; do
+        insinto /usr/share/icons/hicolor/${x}x${x}/apps
+        newins "${WORK}"/icons/SkypeBlue_${x}x${x}.png ${PN}.png
+    done
+
+    insinto /usr/share/applications
+    doins skype.desktop
+
+    emagicdocs
+}
