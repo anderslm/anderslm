@@ -1,14 +1,15 @@
 # Copyright 2010 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="Terminal program that drives serial ports."
+SUMMARY="Terminal used to communicate with a serial port."
 DESCRIPTION="
-A 'clone' of the famous HyperTerminal, but it adds the ability to show the received
-characters as hex, and send hex characters to the serial port. The user can also set the hardware
-handshaking lines.
+Gtkterm is a simple GTK+ terminal used to communicate with a serial port.
+It is has fewer features than minicom, but is designed to be as easy to use as possible. 
+Gtkterm was originally written by Julien Schmitt as a convenient program to communicate with serial devices. 
+It is targeted mainly at developers working with embedded devices, but is useful for anybody who needs to quickly and easily set up serial communication.
 "
-HOMEPAGE="http://www.jls-info.com/julien/linux/"
-DOWNLOADS="http://www.jls-info.com/julien/linux/${PNV}.tar.gz"
+HOMEPAGE="https://fedorahosted.org/gtkterm"
+DOWNLOADS="https://fedorahosted.org/released/gtkterm/${PNV}.tar.gz"
 
 LICENCES="GPL-2"
 SLOT="0"
