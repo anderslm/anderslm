@@ -26,3 +26,10 @@ DEFAULT_SRC_CONFIGURE_PARAMS=(
     --hates=docdir
 )
 
+src_prepare() {
+	autopoint -f
+	aclocal -I m4
+
+	default
+}
+
