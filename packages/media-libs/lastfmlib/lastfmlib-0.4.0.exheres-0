@@ -1,0 +1,18 @@
+# Copyright 2011 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require googlecode [ suffix=tar.gz ]
+
+SUMMARY="A library that provides an implementation of the Last.fm Submissions Protocol v1.2"
+DESCRIPTION="
+lastfmlib is library that provides an implementation of the Last.fm Submissions Protocol v1.2. It
+allows you to scrobble your tracks on Last.fm.
+"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+BUGS_TO="alm.anma@gmail.com"
+
