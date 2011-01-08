@@ -35,8 +35,12 @@ MYOPTIONS="
     ]]
     libexif [[ description = [ Used to retrieve metadata from images. Recommended. ] ]]
     youtube [[ description = [ Support for YouTube videos. ] ]]
-    libextractor [[ description = [ Used to retrieve metadata from all kind of files. It could slow down scanning of video files resulting in extremely slow media import. ] ]]
-    ffmpeg [[ description = [ Used to retrieve additional metadata from video and audio files. ] ]]
+    (
+        libextractor [[ description = [ Used to retrieve metadata from all kind of files. It could slow down scanning of video files resulting in extremely slow media import. ] ]]
+        ffmpeg [[ description = [ Used to retrieve additional metadata from video and audio files. ] ]]
+    ) [[
+        number-selected = at-most-one
+    ]]
     ffmpegthumbnailer [[ 
         description = [ Used to generate video thumbnails on-the-fly. ] 
         requires = [ ffmpeg ]
