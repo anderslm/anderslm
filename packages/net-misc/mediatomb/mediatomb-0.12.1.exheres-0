@@ -1,0 +1,87 @@
+# Copyright 2011 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ suffix=tar.gz ]
+
+SUMMARY="UPnP MediaServer with a nice web user interface."
+DESCRIPTION="
+MediaTomb is an open source (GPL) UPnP MediaServer with a nice web user interface, it allows you to stream your digital media through your home network and listen to/watch it on a variety of UPnP compatible devices.
+
+MediaTomb implements the UPnP MediaServer V 1.0 specification that can be found on http://www.upnp.org/. The current implementation focuses on parts that are required by the specification, however we look into extending the functionality to cover the optional parts of the spec as well.
+
+MediaTomb should work with any UPnP compliant MediaRenderer.
+"
+HOMEPAGE="http://mediatomb.cc/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS="
+    (
+        mysql [[ description = [ Let MediaTomb store data in a MySQL database. ] ]]
+        sqlite3 [[ description = [ Let MediaTomb store data in a sqlite database. ] ]]
+    ) [[ 
+        number-selected = exactly-one
+    ]]
+    db-autocreate [[ description = [ Automatic database creation. Highly recommended. ] ]]
+    libmagic [[ description = [ Used to determine mime types of media files. Highly recommemded. ] ]]
+    javascript [[ description = [ Enable JavaScript support. Required for playlists. ] ]]
+    (
+        id3lib [[ description = [ Used to retrieve id3 tags from mp3 files. Use taglib if possible. ] ]]
+        taglib [[ description = [ Used to retrieve metadata from mp3, flac and ogg files. Recommended ] ]]
+    ) [[
+        number-selected = at-most-one
+    ]]
+    libexif [[ description = [ Used to retrieve metadata from images. Recommended. ] ]]
+    youtube [[ description = [ Support for YouTube videos. ] ]]
+    libextractor [[ description = [ Used to retrieve metadata from all kind of files. It could slow down scanning of video files resulting in extremely slow media import. ] ]]
+    ffmpeg [[ description = [ Used to retrieve additional metadata from video and audio files. ] ]]
+    ffmpegthumbnailer [[ 
+        description = [ Used to generate video thumbnails on-the-fly. ] 
+        requires = [ ffmpeg ]
+    ]]
+    lastfm [[ description = [ Support for last.fm radion channels. ] ]]
+    playstation [[ description = [ Support for PlayStation 3 as a client ] ]]
+"
+
+DEPENDENCIES="
+    build+run:
+        mysql? ( dev-db/mysql[>4.0] )
+        sqlite3? ( dev-db/sqlite[>=3] )
+        db-autocreate? ( sys-libs/zlib )
+        libmagic? ( sys-apps/file )
+        javascript? ( dev-libs/spidermonkey )
+        id3lib? ( media-libs/id3lib )
+        taglib? ( media-libs/taglib )
+        youtube? ( net-misc/curl )
+        libextractor? ( media-libs/libextractor[<0.6.0][ffmpeg] )
+        ffmpeg? ( media/ffmpeg )
+        ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
+        lastfm? ( media-libs/lastfmlib )
+        dev-libs/expat
+"
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    "mysql"
+    "sqlite3"
+    "db-autocreate"
+    "libmagic"
+    "javascript libjs"
+    "id3lib"
+    "taglib"
+    "youtube"
+    "libextractor"
+    "ffmpeg"
+    "ffmpegthumbnailer"
+    "lastfm lastfmlib"
+    "playstation protocolinfo-extension"
+)
+
+BUGS_TO="alm.anma@gmail.com"
+REMOTE_IDS="sourceforge:mediatomb"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --hates=docdir
+)
+
