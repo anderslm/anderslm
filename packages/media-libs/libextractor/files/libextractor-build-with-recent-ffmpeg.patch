@@ -1,0 +1,16 @@
+# Source: Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Upstream: Reported to upstream, https://ng.gnunet.org/bugs/view.php?id=1643, bug number 0001643.
+# Reason: Can't build with recent versions of ffmpeg.
+
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 14121)
++++ configure.ac	(working copy)
+@@ -441,6 +441,7 @@
+ QT_LDFLAGS=$LDFLAGS
+ LDFLAGS=$SAVED_LDFLAGS
+ CPPFLAGS=$SAVED_CPPFLAGS
++CPPFLAGS="$CPPFLAGS -D__STDC_CONSTANT_MACROS"
+ 
+ # end C++ checks
+ fi

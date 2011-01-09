@@ -29,14 +29,11 @@ DEPENDENCIES="
 
 BUGS_TO="alm.anma@gmail.com"
 
+DEFAULT_SRC_PREPARE_PATCHES=( -p0 "${FILES}/${PN}-build-with-recent-ffmpeg.patch" )
 DEFAULT_SRC_CONFIGURE_PARAMS=( )
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 
     "ffmpeg"
     "mpeg2"
 )
-
-src_compile() {
-    make
-}
 
