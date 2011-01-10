@@ -1,42 +1,11 @@
 # Copyright 2011 Anders Ladegaard Marchsteiner  <alm.anma@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require gnu [ suffix=gz ]
-
-SUMMARY="A library used to extract meta data from files of arbitrary type."
-DESCRIPTION="
-GNU libextractor is a library used to extract meta data from files of arbitrary type. It is designed
-to use helper-libraries to perform the actual extraction, and to be trivially extendable by linking
-against external extractors for additional file types. libextractor is a GNU package.
-"
+require libextractor
 
 LICENCES="GPL-3"
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS="
-    ffmpeg [[ description = [ Support meta data extraction from ffmpeg media files. ] ]]
-    mpeg2 [[ description = [ Support meta data extraction from mpeg2 media files. ] ]]
-"
-
-DEPENDENCIES="
-    build:
-    build+run:
-        ffmpeg? ( media/ffmpeg )
-        mpeg2? ( media-libs/libmpeg2  )
-        sys-libs/zlib
-        sys-devel/gettext
-"
 
 BUGS_TO="alm.anma@gmail.com"
-
-DEFAULT_SRC_CONFIGURE_PARAMS=( )
-DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 
-    "ffmpeg"
-    "mpeg2"
-)
-
-src_compile() {
-    make
-}
 
