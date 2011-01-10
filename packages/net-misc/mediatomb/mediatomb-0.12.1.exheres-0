@@ -83,7 +83,6 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
 )
 
 BUGS_TO="alm.anma@gmail.com"
-REMOTE_IDS="sourceforge:mediatomb"
 
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --hates=docdir
