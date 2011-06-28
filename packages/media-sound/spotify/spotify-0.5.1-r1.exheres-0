@@ -16,9 +16,9 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     run:
-    sys-sound/alsa-lib
-    x11-libs/qt[dbus][webkit][X]
     sys-apps/usbutils
+    sys-sound/alsa-lib
+    x11-libs/qt:4[dbus][webkit][X(+)]
 "
 
 BUGS_TO="alm.anma@gmail.com"
