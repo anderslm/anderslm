@@ -1,10 +1,16 @@
 # Copyright 2010 Yury G. Kudryashov
+# Copyright 2011 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="A ConfigurationFile parser library"
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 ] ]
 
-HOMEPAGE="http://www.azzit.de/dotconf/"
-DOWNLOADS="${HOMEPAGE}/download/v$(ever range 1-2)/${PNV}.tar.gz"
+export_exlib_phases src_unpack
+
+SUMMARY="A configuration file parser library."
+
+HOMEPAGE="https://github.com/williamh/dotconf"
+
+DOWNLOADS="${HOMEPAGE}/tarball/v${PV} -> ${PNV}.tar.gz"
 LICENCES="LGPL-2.1"
 
 DEPENDENCIES=""
@@ -12,4 +18,12 @@ DEPENDENCIES=""
 SLOT="0"
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --hates=docdir )
+
+dotconf_src_unpack()
+{
+    default
+
+    filename=$(ls "${WORKBASE}")
+    edo mv "${WORKBASE}/$filename" "${WORKBASE}/${PNV}"
+}
 
