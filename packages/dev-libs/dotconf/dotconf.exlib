@@ -23,7 +23,6 @@ dotconf_src_unpack()
 {
     default
 
-    filename=$(ls "${WORKBASE}")
-    edo mv "${WORKBASE}/$filename" "${WORKBASE}/${PNV}"
+    edo mv "${WORKBASE}"/williamh-${PN}-* "${WORK}"
 }
 
