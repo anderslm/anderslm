@@ -22,10 +22,22 @@ MYOPTIONS=""
 DEPENDENCIES="
     build:
     build+run:
+        dev-libs/glib
         media/ffmpeg
         media-libs/libpng
         media-libs/jpeg
 "
+#    test:
+#        dev-cpp/gtest
 
+# missing files
+RESTRICT="test"
 BUGS_TO="alm.anma@gmail.com"
+
+src_configure() {
+    econf '--enable-gio' \
+        '--enable-jpeg' \
+        '--enable-png' \
+        "$(expecting_tests && echo '--enable-unittests' || echo '--disable-unittests')"
+}
 
