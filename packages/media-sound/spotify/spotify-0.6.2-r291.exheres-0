@@ -16,6 +16,7 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     run:
+    dev-libs/openssl
     sys-apps/usbutils
     sys-sound/alsa-lib
     x11-libs/qt:4[dbus][webkit][X(+)]
@@ -33,5 +34,8 @@ src_unpack() {
 
 src_install() {
     edo cp -r "${WORK}"/* "${IMAGE}"
+    edo mkdir -p "${IMAGE}"/usr/lib64
+    edo ln -s /usr/lib64/libssl.so "${IMAGE}"/usr/lib64/libssl.so.0.9.8
+    edo ln -s /usr/lib64/libcrypto.so "${IMAGE}"/usr/lib64/libcrypto.so.0.9.8
 }
 
