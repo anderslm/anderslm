@@ -7,7 +7,7 @@ A DRM-based music streaming service offering streaming of selected music from a 
 independent record labels, including Sony, EMI, Warner Music Group, and Universal.
 "
 HOMEPAGE="http://www.spotify.com"
-DOWNLOADS="http://repository.spotify.com/pool/non-free/s/spotify/spotify-client-qt_0.5.1.151.g7c8c074-1_amd64.deb"
+DOWNLOADS="http://repository.spotify.com/pool/non-free/s/spotify/spotify-client-qt_0.6.2.291.gcccc1f5.116-1_amd64.deb"
 
 LICENCES="spotify"
 RESTRICT="strip"
