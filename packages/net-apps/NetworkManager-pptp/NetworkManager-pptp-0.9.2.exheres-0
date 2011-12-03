@@ -8,6 +8,8 @@ require gnome-2 gnome.org [ pnv="${PN}-0.9.2.0" ]
 SUMMARY="PPTP plugin for NetworkManager"
 HOMEPAGE="http://www.gnome.org/"
 
+BUGS_TO="alm.anma@gmail.com"
+
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64"

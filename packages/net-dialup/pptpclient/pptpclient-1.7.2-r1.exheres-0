@@ -10,7 +10,7 @@ Microsoft Point-to-Point Tunneling Protocol, PPTP. Allows connection to a PPTP
 based Virtual Private Network (VPN).
 "
 
-BUGS_TO="jedahan@gmail.com"
+BUGS_TO="alm.anma@gmail.com"
 
 SLOT="0"
 LICENCES="GPL-2"
