@@ -1,0 +1,40 @@
+# Copyright 2011 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+# Based in part upon 'NetworkManager-pptp-0.8.2.exheres-0', which is:
+#     Copyright 2010 Jonathan Dahan <jedahan@gmail.com>
+
+require gnome-2 gnome.org [ pnv="${PN}-0.9.2.0" ]
+
+SUMMARY="PPTP plugin for NetworkManager"
+HOMEPAGE="http://www.gnome.org/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="keyring"
+
+DEPENDENCIES="
+    build+run:
+      dev-libs/glib:2
+      dev-libs/dbus-glib:1[>=0.74]
+      net-apps/NetworkManager[>=${PV}]
+      keyring? ( x11-libs/gtk+:2[>=2.6]
+                 gnome-platform/libglade:2
+                 gnome-platform/GConf:2
+                 gnome-desktop/gnome-keyring:1 )
+    run:
+      net-dialup/ppp
+      net-dialup/pptpclient
+"
+
+WORK="${WORKBASE}/${PN}-0.9.2.0"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --libexecdir=/usr/${LIBDIR}/NetworkManager
+    --disable-more-warnings
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
+    "keyring gnome"
+)
+
