@@ -1,0 +1,24 @@
+# Copyright 2012 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+if ever at_least 4 ; then
+    require sourceforge [ pnv=${PNV}-src suffix=zip ]
+else
+    require sourceforge [ pnv=${PN}-src-${PV} suffix=zip ]
+fi
+
+SUMMARY="Powerfully simple build configuration."
+DESCRIPTION="
+Descripe your software project just once, using Premake's simple and
+easy to read syntax, and built it everywhere. Generate project files
+for Visual Studio, GNU Make, Xcode, Code::Blocks, and more across Windows,
+Mac OS X, and Linux. Use the full features Lua scripting engine to make 
+build configuration tasks a breeze.
+"
+HOMEPAGE="http://industriousone.com/premake"
+
+LICENCES="BSD"
+MYOPTIONS=""
+
+BUGS_TO="alm.anma@gmail.com"
+

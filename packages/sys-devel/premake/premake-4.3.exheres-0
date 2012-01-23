@@ -1,0 +1,18 @@
+# Copyright 2012 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require premake
+
+SLOT="4"
+PLATFORMS="~amd64"
+
+src_compile() {
+    cd "${WORK}"/build/gmake.unix
+    default
+}
+
+src_install() {
+    dobin "${WORK}"/bin/release/premake4
+    default
+}
+
