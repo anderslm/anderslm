@@ -1,0 +1,16 @@
+# Copyright 2012 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require premake
+
+HOMEPAGE="http://premake.sourceforge.net"
+
+SLOT="3"
+PLATFORMS="~amd64"
+
+WORK="${WORKBASE}"/Premake-${PV}
+
+src_install() {
+    dobin "${WORK}"/bin/premake
+}
+
