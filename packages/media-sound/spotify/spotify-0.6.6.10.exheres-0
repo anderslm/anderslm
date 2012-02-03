@@ -60,5 +60,11 @@ src_install() {
     edo mkdir -p "${IMAGE}"/usr/lib64
     edo ln -s /usr/"${LIBDIR}"/libssl.so "${IMAGE}/usr/${LIBDIR}"/libssl.so.0.9.8
     edo ln -s /usr/"${LIBDIR}"/libcrypto.so "${IMAGE}/usr/${LIBDIR}"/libcrypto.so.0.9.8
+
+    elog "*** Problem solving ***"
+    elog ""
+    elog "If spotify segfaults when you run it after update, it could be a bug with libflashplayer 10.3.162.29-0.1 and the QT toolkit."
+    elog "To resolve this you can delete offline.bak which is located in ~/.cache/spotify and restart spotify."
+    elog "As an alternative you can set MOZ_PLUGIN_PATH=/path/to/libflashplayer-10.3.162.29-0.1"
 }
 
