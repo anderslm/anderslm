@@ -24,10 +24,16 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     run:
-    dev-libs/openssl
-    sys-apps/usbutils
-    sys-sound/alsa-lib
-    x11-libs/qt:4[dbus][webkit][X(+)]
+        dev-libs/openssl[>=0.9.8] [[ description = [ Spotify wants 0.9.8 but works with >1.0.0 after symlinking ] ]]
+        sys-apps/usbutils
+        sys-devel/gcc:*[>=4.0.0]
+        sys-libs/glibc[>=2.6]
+        sys-sound/alsa-lib[>=1.0.14]
+        x11-libs/libXScrnSaver[>=1.2.0]
+        x11-libs/qt:4[>=4.5.0][dbus][webkit][X(+)]
+
+    suggestion:
+        media/libav [[ description = [ Used for audio playback, The Spotify control file recommends: libavcodec52, libavformat52 ] ]]
 "
 
 MYOPTIONS="
