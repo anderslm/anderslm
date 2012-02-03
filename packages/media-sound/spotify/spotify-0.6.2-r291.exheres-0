@@ -10,7 +10,6 @@ HOMEPAGE="http://www.spotify.com"
 DOWNLOADS="http://repository.spotify.com/pool/non-free/s/spotify/spotify-client-qt_0.6.2.291.gcccc1f5.116-1_amd64.deb"
 
 LICENCES="spotify"
-RESTRICT="strip"
 SLOT="0"
 PLATFORMS="~amd64"
 
