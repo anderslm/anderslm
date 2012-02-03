@@ -58,8 +58,8 @@ src_unpack() {
 src_install() {
     edo cp -r "${WORK}"/* "${IMAGE}"
     edo mkdir -p "${IMAGE}"/usr/lib64
-    edo ln -s /usr/"${LIBDIR}"/libssl.so "${IMAGE}/usr/${LIBDIR}"/libssl.so.0.9.8
-    edo ln -s /usr/"${LIBDIR}"/libcrypto.so "${IMAGE}/usr/${LIBDIR}"/libcrypto.so.0.9.8
+    edo ln -s /usr/${LIBDIR}/libssl.so "${IMAGE}"/usr/${LIBDIR}/libssl.so.0.9.8
+    edo ln -s /usr/${LIBDIR}/libcrypto.so "${IMAGE}"/usr/${LIBDIR}/libcrypto.so.0.9.8
 
     elog "*** Problem solving ***"
     elog ""
