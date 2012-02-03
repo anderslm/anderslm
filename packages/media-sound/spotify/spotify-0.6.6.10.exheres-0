@@ -8,7 +8,15 @@ A DRM-based music streaming service offering streaming of selected music from a 
 independent record labels, including Sony, EMI, Warner Music Group, and Universal.
 "
 HOMEPAGE="http://www.spotify.com"
-DOWNLOADS="http://repository.spotify.com/pool/non-free/s/spotify/spotify-client-qt_0.6.6.10.gdb39032.58-1_amd64.deb"
+
+_MYREPO="http://repository.spotify.com/pool/non-free/s/spotify"
+_MYPN="spotify-client-qt"
+_MYPV="${PV}.gbd39032.58"
+
+DOWNLOADS="
+    platform:amd64? ( "${_MYREPO}"/"${_MYPN}"_"${_MYPV}"-1_amd64.deb )
+    platform:x86? ( "${_MYREPO}"/"${_MYPN}"_"${_MYPV}"-1_i386.deb )
+"
 
 LICENCES="Spotify"
 SLOT="0"
@@ -20,6 +28,12 @@ DEPENDENCIES="
     sys-apps/usbutils
     sys-sound/alsa-lib
     x11-libs/qt:4[dbus][webkit][X(+)]
+"
+
+MYOPTIONS="
+    platform:
+        amd64
+        x86
 "
 
 BUGS_TO="
