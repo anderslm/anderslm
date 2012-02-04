@@ -33,7 +33,7 @@ DEPENDENCIES="
         x11-libs/qt:4[>=4.5.0][dbus][webkit][X(+)]
 
     suggestion:
-        media/libav [[ description = [ Used for audio playback, The Spotify control file recommends: libavcodec52, libavformat52 ] ]]
+        media/libav [[ description = [ Used for the High quality streaming option in Spotify. Spotify recommends: libavcodec52, libavformat52 ] ]]
 "
 
 MYOPTIONS="
