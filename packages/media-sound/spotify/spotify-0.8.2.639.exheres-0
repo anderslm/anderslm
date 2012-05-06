@@ -74,5 +74,9 @@ src_install() {
     edo mkdir -p "${IMAGE}"/usr/lib64
     edo ln -s /usr/${LIBDIR}/libssl.so "${IMAGE}"/usr/${LIBDIR}/libssl.so.0.9.8
     edo ln -s /usr/${LIBDIR}/libcrypto.so "${IMAGE}"/usr/${LIBDIR}/libcrypto.so.0.9.8
-    edo ln -s /usr/${LIBDIR}/libnssutil3.so "${IMAGE}"/usr/${LIBDIR}/libnssutil3.so.1d
+    edo ln -s /usr/${LIBDIR}/nss/libnssutil3.so "${IMAGE}"/usr/${LIBDIR}/libnssutil3.so.1d
+    edo ln -s /usr/${LIBDIR}/nss/libnss3.so "${IMAGE}"/usr/${LIBDIR}/libnss3.so.1d
+    edo ln -s /usr/${LIBDIR}/nss/libsmime3.so "${IMAGE}"/usr/${LIBDIR}/libsmime3.so.1d
+    edo ln -s /usr/${LIBDIR}/libplc4.so "${IMAGE}"/usr/${LIBDIR}/libplc4.so.0d
+    edo ln -s /usr/${LIBDIR}/libnspr4.so "${IMAGE}"/usr/${LIBDIR}/libnspr4.so.0d
 }
