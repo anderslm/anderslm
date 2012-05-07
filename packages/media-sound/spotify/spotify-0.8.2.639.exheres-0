@@ -80,3 +80,9 @@ src_install() {
     edo ln -s /usr/${LIBDIR}/libplc4.so "${IMAGE}"/usr/${LIBDIR}/libplc4.so.0d
     edo ln -s /usr/${LIBDIR}/libnspr4.so "${IMAGE}"/usr/${LIBDIR}/libnspr4.so.0d
 }
+
+pkg_preinst() {
+    # Supply an old version on libpng.
+    edo cp "${FILES}/libpng-1.2.49.${PLATFORM}.so" "${IMAGE}"/usr/${LIBDIR}/libpng12.so.0
+}
+
