@@ -9,13 +9,13 @@ independent record labels, including Sony, EMI, Warner Music Group, and Universa
 "
 HOMEPAGE="http://www.spotify.com"
 
-_MYREPO="http://repository.spotify.com/pool/non-free/s/spotify"
-_MYPN="spotify-client-qt"
-_MYPV="${PV}.gbd39032.58"
+MY_REPO="http://repository.spotify.com/pool/non-free/s/spotify/"
+MY_PN="${PN}-client"
+MY_PV="${PV}.g79d339d.504"
 
 DOWNLOADS="
-    platform:amd64? ( "${_MYREPO}"/"${_MYPN}"_"${_MYPV}"-1_amd64.deb )
-    platform:x86? ( "${_MYREPO}"/"${_MYPN}"_"${_MYPV}"-1_i386.deb )
+    platform:amd64? ( "${MY_REPO}"/"${MY_PN}"_"${MY_PV}"-1_amd64.deb )
+    platform:x86? ( "${MY_REPO}"/"${MY_PN}"_"${MY_PV}"-1_i386.deb )
 "
 
 LICENCES="Spotify"
@@ -24,7 +24,12 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     run:
-        dev-libs/openssl[>=0.9.8] [[ description = [ Spotify wants 0.9.8 but works with >1.0.0 after symlinking ] ]]
+        dev-libs/openssl[>=0.9.8] [[
+            description = [ Spotify wants 0.9.8 but runs with warnings with versions >1.0.0 ]
+        ]]
+        dev-libs/nspr[>=4.0]
+        dev-libs/nss[>=3.1.0]
+        gnome-platform/GConf:2
         sys-apps/usbutils
         sys-devel/gcc:*[>=4.0.0]
         sys-libs/glibc[>=2.6]
@@ -33,7 +38,14 @@ DEPENDENCIES="
         x11-libs/qt:4[>=4.5.0][dbus][webkit][X(+)]
 
     suggestion:
-        media/libav [[ description = [ Used for the High quality streaming option in Spotify. Spotify recommends: libavcodec52, libavformat52 ] ]]
+        media/libav [[
+            description = [ Used for the High quality streaming option in Spotify ]
+            note = [ Spotify recommends versions between >0.5 and 0.8, tested with 0.7.4 ]
+        ]]
+
+        net-apps/NetworkManager [[
+            description = [ Optional for unknown feature (dbus.freedesktop.org related) ]
+        ]]
 "
 
 MYOPTIONS="
@@ -57,14 +69,10 @@ src_unpack() {
 
 src_install() {
     edo cp -r "${WORK}"/* "${IMAGE}"
+
+    # Make symlinks for the debian-style lib names
     edo mkdir -p "${IMAGE}"/usr/lib64
     edo ln -s /usr/${LIBDIR}/libssl.so "${IMAGE}"/usr/${LIBDIR}/libssl.so.0.9.8
     edo ln -s /usr/${LIBDIR}/libcrypto.so "${IMAGE}"/usr/${LIBDIR}/libcrypto.so.0.9.8
-
-    elog "*** Problem solving ***"
-    elog ""
-    elog "If spotify segfaults when you run it after update, it could be a bug with libflashplayer 10.3.162.29-0.1 and the QT toolkit."
-    elog "To resolve this you can delete offline.bak which is located in ~/.cache/spotify and restart spotify."
-    elog "As an alternative you can set MOZ_PLUGIN_PATH=/path/to/libflashplayer-10.3.162.29-0.1"
+    edo ln -s /usr/${LIBDIR}/libnssutil3.so "${IMAGE}"/usr/${LIBDIR}/libnssutil3.so.1d
 }
-
