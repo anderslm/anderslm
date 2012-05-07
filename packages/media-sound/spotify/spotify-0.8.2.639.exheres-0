@@ -71,7 +71,7 @@ src_install() {
     edo cp -r "${WORK}"/* "${IMAGE}"
 
     # Make symlinks for the debian-style lib names
-    edo mkdir -p "${IMAGE}"/usr/lib64
+    edo mkdir -p "${IMAGE}/usr/${LIBDIR}"
     edo ln -s /usr/${LIBDIR}/libssl.so "${IMAGE}"/usr/${LIBDIR}/libssl.so.0.9.8
     edo ln -s /usr/${LIBDIR}/libcrypto.so "${IMAGE}"/usr/${LIBDIR}/libcrypto.so.0.9.8
     edo ln -s /usr/${LIBDIR}/nss/libnssutil3.so "${IMAGE}"/usr/${LIBDIR}/libnssutil3.so.1d
