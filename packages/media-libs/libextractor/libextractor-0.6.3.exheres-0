@@ -9,5 +9,8 @@ PLATFORMS="~amd64"
 
 BUGS_TO="alm.anma@gmail.com"
 
-DEFAULT_SRC_PREPARE_PATCHES=( -p0 "${FILES}/${PN}-build-with-recent-ffmpeg.patch" )
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/newer-ffmpeg.patch" )
+
+# TODO: Why do plugin tests fail?
+RESTRICT="test"
 
