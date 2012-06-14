@@ -11,7 +11,7 @@ allows you to scrobble your tracks on Last.fm.
 
 LICENCES="GPL-2"
 SLOT="0"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~x86"
 MYOPTIONS=""
 
 BUGS_TO="alm.anma@gmail.com"

@@ -5,7 +5,7 @@ require libextractor
 
 LICENCES="GPL-3"
 SLOT="0"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~x86"
 
 BUGS_TO="alm.anma@gmail.com"
 
