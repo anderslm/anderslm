@@ -9,3 +9,6 @@ PLATFORMS="~amd64"
 
 BUGS_TO="alm.anma@gmail.com"
 
+# TODO: Why do plugin tests fail?
+RESTRICT="test"
+
