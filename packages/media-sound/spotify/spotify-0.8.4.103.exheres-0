@@ -11,7 +11,7 @@ HOMEPAGE="http://www.spotify.com"
 
 MY_REPO="http://repository.spotify.com/pool/non-free/s/spotify/"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g79d339d.504"
+MY_PV="${PV}.g9cb177b.260"
 
 DOWNLOADS="
     platform:amd64? ( "${MY_REPO}"/"${MY_PN}"_"${MY_PV}"-1_amd64.deb )
