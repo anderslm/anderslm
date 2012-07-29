@@ -30,6 +30,10 @@ DEPENDENCIES="
 #    test:
 #        dev-cpp/gtest
 
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/${PN}-ffmpeg-0.11.1.patch"
+)
+
 # missing files
 RESTRICT="test"
 BUGS_TO="alm.anma@gmail.com"
