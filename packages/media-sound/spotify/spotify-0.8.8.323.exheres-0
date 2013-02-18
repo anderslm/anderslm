@@ -11,7 +11,7 @@ HOMEPAGE="http://www.spotify.com"
 
 MY_REPO="http://repository.spotify.com/pool/non-free/s/spotify/"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g9cb177b.260"
+MY_PV="${PV}.gd143501.250"
 
 DOWNLOADS="
     platform:amd64? ( "${MY_REPO}"/"${MY_PN}"_"${MY_PV}"-1_amd64.deb )
@@ -61,6 +61,10 @@ BUGS_TO="
 
 WORK="${WORKBASE}"
 
+pkg_setup() {
+    exdirectory --allow /opt
+}
+
 src_unpack() {
     default
     unpack ./data.tar.gz
@@ -68,6 +72,9 @@ src_unpack() {
 }
 
 src_install() {
+    # Remove empty directory
+    edo rmdir "${WORK}"/usr/share/spotify
+    
     edo cp -r "${WORK}"/* "${IMAGE}"
 
     # Make symlinks for the debian-style lib names
