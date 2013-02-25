@@ -1,0 +1,24 @@
+# Source: Written by Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Upstream: No.
+# Reason: Do not use obsolete macros.
+diff -urpN a/configure.in b/configure.in
+--- a/configure.in	2013-02-25 20:36:20.720077213 +0100
++++ b/configure.in	2013-02-25 20:36:35.678038336 +0100
+@@ -1,7 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT([gtkterm], [0.99.7-rc1], [https://fedorahosted.org/gtkterm/])
+ AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ # Use AM_SILENT_RULES if present
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+@@ -15,7 +15,7 @@ dnl Checks for libraries.
+ dnl Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS(fcntl.h unistd.h)
+-AM_SYS_POSIX_TERMIOS
++AC_SYS_POSIX_TERMIOS
+ 
+ dnl Initialize intltool
+ 

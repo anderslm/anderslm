@@ -9,7 +9,7 @@ Gtkterm was originally written by Julien Schmitt as a convenient program to comm
 It is targeted mainly at developers working with embedded devices, but is useful for anybody who needs to quickly and easily set up serial communication.
 "
 HOMEPAGE="https://fedorahosted.org/gtkterm"
-DOWNLOADS="https://fedorahosted.org/released/gtkterm/${PNV}.tar.gz"
+DOWNLOADS="https://fedorahosted.org/released/gtkterm/${PNV}-rc1.tar.gz"
 
 LICENCES="GPL-2"
 SLOT="0"
@@ -17,19 +17,24 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     build+run:
-        dev-libs/vte
+        dev-libs/vte:0
 "
 
 BUGS_TO="alm.anma@gmail.com"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/autogen.patch" )
 
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --hates=docdir
 )
 
-src_prepare() {
-	autopoint -f
-	aclocal -I m4
+WORK="${WORK}-rc1"
 
-	default
+src_prepare() {
+    default
+    
+    ./autogen.sh
+
+    edo echo src/term_config.c > "${WORK}/po/POTFILES.skip"
 }
 
