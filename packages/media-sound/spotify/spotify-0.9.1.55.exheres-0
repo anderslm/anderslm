@@ -30,6 +30,7 @@ DEPENDENCIES="
         dev-libs/nspr[>=4.0]
         dev-libs/nss[>=3.1.0]
         gnome-platform/GConf:2
+        net-print/cups
         sys-apps/usbutils
         sys-devel/gcc:*[>=4.0.0]
         sys-libs/glibc[>=2.6]
