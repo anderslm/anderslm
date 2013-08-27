@@ -1,0 +1,13 @@
+    Source: http://code.google.com/p/ffmpegthumbnailer/issues/detail?id=103
+    Upstream: Bug #103
+    Reason: 2.0.8 fails to compile against libpng 1.6.1 because of missing #include <cstring>
+--- a/libffmpegthumbnailer/pngwriter.cpp	2012-08-25 13:07:44.000000000 +0100
++++ b/libffmpegthumbnailer/pngwriter.cpp	2013-08-26 10:45:47.236502312 +0100
+@@ -17,6 +17,7 @@
+ #include "pngwriter.h"
+ #include <stdexcept>
+ #include <cassert>
++#include <cstring>
+ 
+ using namespace std;
+ 
