@@ -17,7 +17,7 @@ their projects
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
-MYOPTIONS=""
+MYOPTIONS="libav"
 
 DEPENDENCIES="
     build:
@@ -25,8 +25,8 @@ DEPENDENCIES="
         dev-libs/glib
         media-libs/libpng
         media-libs/jpeg
-	|| ( media/ffmpeg[>=1.0]
-             media/libav[>=9] )
+        !libav? ( media/ffmpeg[>=1.0] )
+        libav? ( media/libav[>=9] )
 "
 #    test:
 #        dev-cpp/gtest
@@ -45,3 +45,4 @@ src_configure() {
         '--enable-png' \
         "$(expecting_tests && echo '--enable-unittests' || echo '--disable-unittests')"
 }
+
