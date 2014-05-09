@@ -1,0 +1,5 @@
+[gerrit]
+host=galileo.mailstation.de
+port=29418
+project=anderslm
+defaultbranch=master
