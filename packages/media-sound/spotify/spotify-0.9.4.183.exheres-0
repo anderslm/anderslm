@@ -13,14 +13,11 @@ MY_REPO="http://repository.spotify.com/pool/non-free/s/spotify/"
 MY_PN="${PN}-client"
 MY_PV="${PV}.g644e24e.428"
 
-DOWNLOADS="
-    platform:amd64? ( "${MY_REPO}"/"${MY_PN}"_"${MY_PV}"-1_amd64.deb )
-    platform:x86? ( "${MY_REPO}"/"${MY_PN}"_"${MY_PV}"-1_i386.deb )
-"
+DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}-1_i386.deb")
 
 LICENCES="Spotify"
 SLOT="0"
-PLATFORMS="~amd64"
+PLATFORMS="~x86"
 
 DEPENDENCIES="
     run:
@@ -47,12 +44,6 @@ DEPENDENCIES="
         net-apps/NetworkManager [[
             description = [ Optional for unknown feature (dbus.freedesktop.org related) ]
         ]]
-"
-
-MYOPTIONS="
-    platform:
-        amd64
-        x86
 "
 
 BUGS_TO="
@@ -92,6 +83,6 @@ src_install() {
 
 pkg_preinst() {
     # Supply an old version on libpng.
-    edo cp "${FILES}/libpng-1.2.49.${PLATFORM}.so" "${IMAGE}"/usr/${LIBDIR}/libpng12.so.0
+    edo cp "${FILES}/libpng-1.2.49.x86.so" "${IMAGE}"/usr/${LIBDIR}/libpng12.so.0
 }
 
