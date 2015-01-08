@@ -1,0 +1,83 @@
+# Copyright 2011 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Copyright 2012 Lasse Brun <bruners@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Music streaming service."
+DESCRIPTION="
+A DRM-based music streaming service offering streaming of selected music from a range of major and
+independent record labels, including Sony, EMI, Warner Music Group, and Universal.
+"
+HOMEPAGE="http://www.spotify.com"
+
+MY_REPO="http://repository.spotify.com/pool/non-free/s/spotify/"
+MY_PN="${PN}-client"
+MY_PV="${PV}.g2b1a638.81"
+
+DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}-1_amd64.deb")
+
+LICENCES="Spotify"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-libs/openssl[>=0.9.8] [[
+            description = [ Spotify wants 0.9.8 but runs with warnings with versions >1.0.0 ]
+        ]]
+        dev-libs/nspr[>=4.0]
+        dev-libs/nss[>=3.1.0]
+        gnome-platform/GConf:2
+        net-print/cups
+        sys-apps/systemd
+        sys-apps/usbutils
+        sys-devel/gcc:*[>=4.0.0]
+        sys-libs/glibc[>=2.6]
+        sys-sound/alsa-lib[>=1.0.14]
+        x11-libs/libXScrnSaver[>=1.2.0]
+        x11-libs/qt:4[>=4.5.0][dbus][webkit][X(+)]
+
+    suggestion:
+        media/libav [[
+            description = [ Used for the High quality streaming option in Spotify ]
+            note = [ Spotify recommends versions between >0.5 and 0.8, tested with 0.7.4 ]
+        ]]
+
+        net-apps/NetworkManager [[
+            description = [ Optional for unknown feature (dbus.freedesktop.org related) ]
+        ]]
+"
+
+BUGS_TO="
+    alm.anma@gmail.com
+    bruners@gmail.com
+"
+
+WORK="${WORKBASE}"
+
+pkg_setup() {
+    exdirectory --allow /opt
+}
+
+src_unpack() {
+    default
+    unpack ./data.tar.gz
+    edo rm -f {control,data}.tar.gz debian-binary
+}
+
+src_install() {
+    # Remove empty directory
+    edo rmdir "${WORK}"/usr/share/spotify
+
+    edo cp -r "${WORK}"/* "${IMAGE}"
+
+    # Make symlinks for the debian-style lib names
+    edo mkdir -p "${IMAGE}/usr/${LIBDIR}"
+    edo ln -s /usr/${LIBDIR}/libudev.so "${IMAGE}"/usr/${LIBDIR}/libudev.so.0
+}
+
+pkg_preinst() {
+    # Supply an old version on libpng.
+    edo cp "${FILES}/libpng-1.2.49.amd64.so" "${IMAGE}"/usr/${LIBDIR}/libpng12.so.0
+    edo cp "${FILES}/libgcrypt-11.8.3.amd64.so" "${IMAGE}"/usr/${LIBDIR}/libgcrypt.so.11
+}
+
