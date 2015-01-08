@@ -32,6 +32,7 @@ DEPENDENCIES="
         sys-devel/gcc:*[>=4.0.0]
         sys-libs/glibc[>=2.6]
         sys-sound/alsa-lib[>=1.0.14]
+        x11-libs/gtk+:2
         x11-libs/libXScrnSaver[>=1.2.0]
         x11-libs/qt:4[>=4.5.0][dbus][webkit][X(+)]
 
@@ -84,5 +85,6 @@ src_install() {
 pkg_preinst() {
     # Supply an old version on libpng.
     edo cp "${FILES}/libpng-1.2.49.x86.so" "${IMAGE}"/usr/${LIBDIR}/libpng12.so.0
+    edo cp "${FILES}/libgcrypt-11.8.3.x86.so" "${IMAGE}"/usr/${LIBDIR}/libgcrypt.so.11
 }
 
