@@ -17,16 +17,17 @@ their projects
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
-MYOPTIONS="libav"
+MYOPTIONS="
+    ( providers: ffmpeg libav ) [[ number-selected = exactly-one ]]
+"
 
 DEPENDENCIES="
-    build:
     build+run:
         dev-libs/glib
         media-libs/libpng
         media-libs/jpeg
-        !libav? ( media/ffmpeg[>=1.0] )
-        libav? ( media/libav[>=9] )
+        providers:ffmpeg? ( media/ffmpeg[>=1.0] )
+        providers:libav? ( media/libav[>=9] )
 "
 #    test:
 #        dev-cpp/gtest
