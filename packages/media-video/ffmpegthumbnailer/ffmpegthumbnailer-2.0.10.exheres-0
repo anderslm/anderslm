@@ -1,17 +1,17 @@
 # Copyright 2011 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require googlecode [ suffix=tar.gz ]
+require github [ user=dirkvdb release=${PV} suffix=tar.bz2 ] cmake [ api=2 ]
 
 SUMMARY="Can be used to create thumbnails for your video files."
 DESCRIPTION="
 This video thumbnailer can be used to create thumbnails for your video files. The thumbnailer uses
 ffmpeg to decode frames from the video files, so supported videoformats depend on the configuration
-flags of ffmpeg. 
+flags of ffmpeg.
 This thumbnailer was designed to be as fast and lightweight as possible. The only dependencies are
-ffmpeg, libpng and libjpeg. 
+ffmpeg, libpng and libjpeg.
 The project also includes a C/C++ library that can be used by developers to generate thumbnails in
-their projects
+their projects.
 "
 
 LICENCES="GPL-2"
@@ -19,31 +19,25 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 MYOPTIONS="
     ( providers: ffmpeg libav ) [[ number-selected = exactly-one ]]
+    ( providers: ijg-jpeg jpeg-turbo ) [[ number-selected = exactly-one ]]
 "
 
 DEPENDENCIES="
     build+run:
         dev-libs/glib
-        media-libs/libpng
-        media-libs/jpeg
+        media-libs/libpng:=
         providers:ffmpeg? ( media/ffmpeg[>=1.0] )
+        providers:ijg-jpeg? ( media-libs/jpeg:= )
+        providers:jpeg-turbo? ( media-libs/libjpeg-turbo )
         providers:libav? ( media/libav[>=9] )
 "
 #    test:
 #        dev-cpp/gtest
 
-DEFAULT_SRC_PREPARE_PATCHES=(
-    "${FILES}"/${PNV}-memcpy.patch
-)
-
 # missing files
 RESTRICT="test"
 BUGS_TO="alm.anma@gmail.com"
 
-src_configure() {
-    econf '--enable-gio' \
-        '--enable-jpeg' \
-        '--enable-png' \
-        "$(expecting_tests && echo '--enable-unittests' || echo '--disable-unittests')"
-}
+CMAKE_SRC_CONFIGURE_PARAMS=( '-DENABLE_GIO:BOOL=TRUE' )
+CMAKE_SRC_CONFIGURE_TESTS=( '-DENABLE_TESTS:BOOL=TRUE -DENABLE_TESTS:BOOL=FALSE' )
 
