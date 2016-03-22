@@ -11,7 +11,6 @@ GNU libextractor is a library used to extract meta data from files of arbitrary 
 to use helper-libraries to perform the actual extraction, and to be trivially extendable by linking
 against external extractors for additional file types. libextractor is a GNU package.
 "
-REMOTE_IDS="freshmeat:libextractor"
 
 MYOPTIONS="
     ffmpeg [[ description = [ Support meta data extraction from ffmpeg media files. ] ]]
