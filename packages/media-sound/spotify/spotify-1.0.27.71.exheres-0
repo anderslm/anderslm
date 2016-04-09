@@ -13,8 +13,7 @@ HOMEPAGE="http://www.spotify.com"
 
 MY_REPO="http://repository-origin.spotify.com/pool/non-free/s/spotify-client"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g58007b4c-22"
-
+MY_PV="${PV}.g0a26e3b2-9"
 DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}_amd64.deb")
 
 LICENCES="Spotify"
