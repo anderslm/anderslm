@@ -13,16 +13,13 @@ HOMEPAGE="http://www.spotify.com"
 
 MY_REPO="http://repository-origin.spotify.com/pool/non-free/s/spotify-client"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g0a26e3b2-9"
+MY_PV="${PV}.g67727800-21"
 DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}_amd64.deb")
-
 LICENCES="Spotify"
 SLOT="0"
 PLATFORMS="~amd64"
 
 DEPENDENCIES="
-    build:
-        dev-util/patchelf
     run:
         dev-libs/atk[>=2.18]
         dev-libs/expat[>=2.1]
@@ -36,7 +33,6 @@ DEPENDENCIES="
         media-libs/fontconfig[>=2.11]
         media-libs/freetype[>=2.6]
         net-misc/curl[>=7.43]
-        net-print/cups
         sys-apps/dbus[>=1.10]
         sys-apps/systemd
         sys-apps/usbutils
@@ -69,6 +65,9 @@ DEPENDENCIES="
 
         net-apps/NetworkManager [[
             description = [ Optional for unknown feature (dbus.freedesktop.org related) ]
+        ]]
+        net-print/cups [[
+            description = [ Optional for unknown feature, should be for printing ...  ]
         ]]
 "
 
