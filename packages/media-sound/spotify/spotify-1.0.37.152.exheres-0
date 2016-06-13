@@ -13,12 +13,14 @@ HOMEPAGE="http://www.spotify.com"
 
 MY_REPO="http://repository-origin.spotify.com/pool/non-free/s/spotify-client"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g67727800-21"
+MY_PV="${PV}.gc83ea995-42"
+# Source URL : http://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.37.152.gc83ea995-42_amd64.deb
+
 DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}_amd64.deb")
 LICENCES="Spotify"
 SLOT="0"
 PLATFORMS="~amd64"
-
+MYOPTIONS="( providers: ffmpeg libav ) [[ number-selected = exactly-one ]]"
 DEPENDENCIES="
     run:
         dev-libs/atk[>=2.18]
@@ -58,11 +60,8 @@ DEPENDENCIES="
         x11-apps/xdg-utils
 
     suggestion:
-        media/libav [[
-            description = [ Used for the High quality streaming option in Spotify ]
-            note = [ Spotify recommends versions between >0.5 and 0.8, tested with 0.7.4 ]
-        ]]
-
+        providers:ffmpeg? ( media/ffmpeg[>=1.0] )
+        providers:libav? ( media/libav[>=9] )
         net-apps/NetworkManager [[
             description = [ Optional for unknown feature (dbus.freedesktop.org related) ]
         ]]
