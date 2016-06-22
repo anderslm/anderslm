@@ -1,7 +1,11 @@
 # Copyright 2012 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-if ever at_least 4 ; then
+if ever at_least 5 ; then
+    MY_PV=${PV/_/-}
+    require github [ user=premake project=${PN}-core release=v${MY_PV} pnv=${PN}-${MY_PV}-src suffix=zip ]
+    WORK=${WORKBASE}/${PN}-${MY_PV}
+elif ever at_least 4 ; then
     require sourceforge [ pnv=${PNV}-src suffix=zip ]
 else
     require sourceforge [ pnv=${PN}-src-${PV} suffix=zip ]
