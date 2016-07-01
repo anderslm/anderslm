@@ -1,7 +1,7 @@
 # Copyright 2011 Anders Ladegaard Marchsteiner  <alm.anma@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require gnu [ suffix=gz ]
+require gnu [ suffix=tar.gz ]
 
 export_exlib_phases src_compile
 
