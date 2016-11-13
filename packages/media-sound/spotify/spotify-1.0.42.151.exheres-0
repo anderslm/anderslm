@@ -13,7 +13,7 @@ HOMEPAGE="http://www.spotify.com"
 
 MY_REPO="http://repository-origin.spotify.com/pool/non-free/s/spotify-client"
 MY_PN="${PN}-client"
-MY_PV="${PV}.gc83ea995-42"
+MY_PV="${PV}.g19de0aa6-74"
 # Source URL : http://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.37.152.gc83ea995-42_amd64.deb
 
 DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}_amd64.deb")
