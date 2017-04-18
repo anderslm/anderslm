@@ -9,12 +9,12 @@ DESCRIPTION="
 A DRM-based music streaming service offering streaming of selected music from a range of major and
 independent record labels, including Sony, EMI, Warner Music Group, and Universal.
 "
-HOMEPAGE="http://www.spotify.com"
+HOMEPAGE="https://www.spotify.com"
 
-MY_REPO="http://repository-origin.spotify.com/pool/non-free/s/spotify-client"
+MY_REPO="https://repository-origin.spotify.com/pool/non-free/s/spotify-client"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g2f08534a-47"
-# Source URL : http://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.52.717.g2f08534a-47_amd64.deb
+MY_PV="${PV}.gde3fc4b2-33"
+# Source URL : https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.53.758.gde3fc4b2-33_amd64.deb
 
 DOWNLOADS=("${MY_REPO}/${MY_PN}_${MY_PV}_amd64.deb")
 LICENCES="Spotify"
