@@ -50,7 +50,6 @@ DEPENDENCIES="
         media-libs/freetype:2[>=2.6]
         net-misc/curl[>=7.43]
         sys-apps/dbus[>=1.10]
-        sys-apps/systemd
         sys-sound/alsa-lib[>=1.0.14]
         x11-libs/cairo[>=1.14.2][X(+)]
         x11-libs/gdk-pixbuf:2.0[>=2.32.3]
