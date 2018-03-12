@@ -4,7 +4,7 @@
 
 MY_REPO="https://repository-origin.spotify.com/pool/non-free/s/spotify-client"
 MY_PN="${PN}-client"
-MY_PV="${PV}.g5ffabd56-26"
+MY_PV="${PV}.g6bd7cc73-35"
 # Source URL : https://repository-origin.spotify.com/pool/non-free/s/spotify-client/
 
 require gtk-icon-cache freedesktop-desktop
