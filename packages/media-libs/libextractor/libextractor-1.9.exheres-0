@@ -3,14 +3,9 @@
 
 require libextractor
 
-LICENCES="GPL-3"
-SLOT="0"
 PLATFORMS="~amd64"
 
-BUGS_TO="alm.anma@gmail.com"
-
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/newer-ffmpeg.patch" )
-
-# TODO: Why do plugin tests fail?
-RESTRICT="test"
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}"/1ecee9a47717e36cb8a3925d011d1a6de11d631c.patch
+)
 
