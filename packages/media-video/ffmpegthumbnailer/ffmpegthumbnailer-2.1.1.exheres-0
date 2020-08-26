@@ -18,18 +18,16 @@ LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
 MYOPTIONS="
-    ( providers: ffmpeg libav ) [[ number-selected = exactly-one ]]
     ( providers: ijg-jpeg jpeg-turbo ) [[ number-selected = exactly-one ]]
 "
 
 DEPENDENCIES="
     build+run:
         dev-libs/glib
+        media/ffmpeg[>=1.0]
         media-libs/libpng:=
-        providers:ffmpeg? ( media/ffmpeg[>=1.0] )
         providers:ijg-jpeg? ( media-libs/jpeg:= )
         providers:jpeg-turbo? ( media-libs/libjpeg-turbo )
-        providers:libav? ( media/libav[>=9] )
 "
 #    test:
 #        dev-cpp/gtest
