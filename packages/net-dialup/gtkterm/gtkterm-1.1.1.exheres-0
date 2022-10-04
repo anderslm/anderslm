@@ -1,0 +1,29 @@
+# Copyright 2010 Anders Ladegaard Marchsteiner <alm.anma@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Jeija tag=${PV} ]
+require meson
+
+SUMMARY="Terminal used to communicate with a serial port"
+DESCRIPTION="
+Gtkterm is a simple GTK+ terminal used to communicate with a serial port.
+It is has fewer features than minicom, but is designed to be as easy to use as possible.
+Gtkterm was originally written by Julien Schmitt as a convenient program to communicate with serial
+devices.
+It is targeted mainly at developers working with embedded devices, but is useful for anybody who
+needs to quickly and easily set up serial communication.
+"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/glib:2
+        dev-libs/vte:2.91[>=0.28.0]
+        gnome-desktop/libgudev[>=230]
+        x11-libs/gtk+:3[>=3.0.0]
+"
+
